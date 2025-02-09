@@ -81,6 +81,22 @@ class linkedList {
         this.length = Math.max(0, this.length - 1);
         return this;
     }
+
+    getIndex(index)
+    {   if(index < 0 ) return undefined
+        if(!this.head === null) return undefined;
+        let tmp = this.head;
+        let count = 0;
+        while(tmp.next !==null)
+        {
+            if (index === count) {
+                return tmp.value;
+            }
+            count++;
+            tmp = tmp.next;
+        }
+     return undefined;
+    }
 }
 
 
@@ -88,19 +104,17 @@ class linkedList {
 
 const firstLinkedList = new linkedList(1);
 
-// firstLinkedList.push(56);
-// firstLinkedList.push(9956)
-// firstLinkedList.push(12)
-// firstLinkedList.push(4)
+firstLinkedList.push(56);
+firstLinkedList.push(9956)
+firstLinkedList.push(12)
+firstLinkedList.push(4)
 firstLinkedList.pop();
 firstLinkedList.unshift(621);
 firstLinkedList.push(56);
-firstLinkedList.push(9956)
-firstLinkedList.shift();
-
-
+firstLinkedList.push(9956);
 
 console.log(firstLinkedList)
+console.log(firstLinkedList.getIndex(0));
 
 
 
