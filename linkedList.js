@@ -82,42 +82,44 @@ class linkedList {
         return this;
     }
 
-    getIndex(index)
-    {   if(index < 0 ) return undefined
-        if(!this.head) return undefined;
+    getIndex(index) {
+        if (index < 0 || index >= this.length) return undefined;
+        if (!this.head) return undefined;
         let tmp = this.head;
         let count = 0;
-        while(tmp !==null)
-        {
+        while (tmp !== null) {
             if (index === count) {
-                return tmp.value;
+                return tmp;
             }
             count++;
             tmp = tmp.next;
         }
-     return undefined;
+        return undefined;
     };
 
-    setByIndex(index , value)
-    {   
-        if(index < 0 ) return undefined
-        if(!this.head) return undefined;
-        let tmp = this.head;
-        let count =0;
-
-        while(tmp !== null)
-        {
-            if (index === count) {
-                 tmp.value = value;
-                 return this;
-            }
-            count++;
-            tmp = tmp.next;
-        }
-
-        return undefined;
+    setByIndex(index, value) {
+        let nodeByIndex = this.getIndex(index);
+        if (!nodeByIndex) return undefined;
+        nodeByIndex.value = value;
+        return this;
 
     }
+    insert(index, value) {
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return this.unshift(value);
+        if (index === this.length) return this.push(value);
+        const newNode = new Node(value);
+        let prev = this.getIndex(index - 1);
+        if (!prev) return false;
+        newNode.next = prev.next;
+        prev.next = newNode;
+        this.length++;
+
+        return this;
+
+
+    }
+
 }
 
 
