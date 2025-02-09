@@ -84,10 +84,10 @@ class linkedList {
 
     getIndex(index)
     {   if(index < 0 ) return undefined
-        if(!this.head === null) return undefined;
+        if(!this.head) return undefined;
         let tmp = this.head;
         let count = 0;
-        while(tmp.next !==null)
+        while(tmp !==null)
         {
             if (index === count) {
                 return tmp.value;
@@ -96,6 +96,27 @@ class linkedList {
             tmp = tmp.next;
         }
      return undefined;
+    };
+
+    setByIndex(index , value)
+    {   
+        if(index < 0 ) return undefined
+        if(!this.head) return undefined;
+        let tmp = this.head;
+        let count =0;
+
+        while(tmp !== null)
+        {
+            if (index === count) {
+                 tmp.value = value;
+                 return this;
+            }
+            count++;
+            tmp = tmp.next;
+        }
+
+        return undefined;
+
     }
 }
 
