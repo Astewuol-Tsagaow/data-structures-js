@@ -117,19 +117,46 @@ class linkedList {
 
         return this;
     }
-    remove(index)
-    {
+    remove(index) {
         if (index === 0) return this.unshift(value);
-        if (index === this.length-1) return this.pop();
+        if (index === this.length - 1) return this.pop();
         if (index < 0 || index > this.length) return false;
         let before = this.getIndex(index - 1);
-        let temp = this.getIndex(index );
+        let temp = this.getIndex(index);
         if (!before || !tmp) return false;
         before.next = temp.next;
         this.length--;
-      return tmp;
+        return tmp;
 
+    };
+    reverse() {
+        let current = this.head;
+        this.head = this.tail;
+        this.tail = current;
+    
+        let prev = null;
+        let next;
+    
+        while (current) { 
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return this;
     }
+
+    printList() {
+        let current = this.head;
+        let result = [];
+        while (current) {
+            result.push(current.value);
+            current = current.next;
+        }
+        console.log(result.join(" -> "));
+    }
+    
 
 }
 
@@ -141,14 +168,14 @@ const firstLinkedList = new linkedList(1);
 firstLinkedList.push(56);
 firstLinkedList.push(9956)
 firstLinkedList.push(12)
-firstLinkedList.push(4)
-firstLinkedList.pop();
-firstLinkedList.unshift(621);
-firstLinkedList.push(56);
-firstLinkedList.push(9956);
+firstLinkedList.printList();
+console.log("After reversed" );
+firstLinkedList.reverse();
+firstLinkedList.printList()
+console.log(firstLinkedList.pop())
 
-console.log(firstLinkedList)
-console.log(firstLinkedList.getIndex(0));
+
+
 
 
 
