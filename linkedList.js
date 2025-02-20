@@ -116,7 +116,18 @@ class linkedList {
         this.length++;
 
         return this;
-
+    }
+    remove(index)
+    {
+        if (index === 0) return this.unshift(value);
+        if (index === this.length-1) return this.pop();
+        if (index < 0 || index > this.length) return false;
+        let before = this.getIndex(index - 1);
+        let temp = this.getIndex(index );
+        if (!before || !tmp) return false;
+        before.next = temp.next;
+        this.length--;
+      return tmp;
 
     }
 
