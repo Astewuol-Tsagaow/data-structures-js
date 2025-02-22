@@ -38,17 +38,17 @@ class Stack{
     size() {
         return this.length;
     };
+};
 
-    printStack()
+function printStack(stack)
+{    let curr = stack.top;
+    let res = [];
+    while(curr)
     {
-        let res = [];
-        while(!this.isEmpty())
-        {
-            res.push(this.peek());
-            this.pop();
-        }
-        return res.join('->');
+        res.push(curr.value);
+        curr = curr.next;    
     }
+   return res.join('->');
 }
 // <------- Stack with Array from here ---------->
 class StackWithArr {
@@ -76,6 +76,12 @@ let myFirstSatck = new Stack(55);
 myFirstSatck.push(1);
 myFirstSatck.push(2);
 myFirstSatck.push(5);
-console.log(myFirstSatck.printStack())
+console.log(printStack(myFirstSatck));
+console.log(myFirstSatck)
+myFirstSatck.push(2223);
+console.log(printStack(myFirstSatck));
+
+
+
 
 
