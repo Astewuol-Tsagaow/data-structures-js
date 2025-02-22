@@ -37,9 +37,20 @@ class Stack{
 
     size() {
         return this.length;
+    };
+
+    printStack()
+    {
+        let res = [];
+        while(!this.isEmpty())
+        {
+            res.push(this.peek());
+            this.pop();
+        }
+        return res.join('->');
     }
 }
-
+// <------- Stack with Array from here ---------->
 class StackWithArr {
     constructor() {
         this.stackList = [];
@@ -58,13 +69,13 @@ class StackWithArr {
        
         return this.stackList.pop() ;
     }
+   
 }
 
-let myFirstSatck = new StackWithArr();
+let myFirstSatck = new Stack(55);
 myFirstSatck.push(1);
 myFirstSatck.push(2);
 myFirstSatck.push(5);
-myFirstSatck.pop();
-myFirstSatck.pop();
+console.log(myFirstSatck.printStack())
 
-console.log(myFirstSatck.pop());
+
